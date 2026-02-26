@@ -15,7 +15,7 @@ st.title("🧠⚽ AI Sports Image Classifier")
 # ===============================
 # Paths (ถ้าไฟล์อยู่โฟลเดอร์เดียวกัน)
 # ===============================
-model_path = "nn_model.keras"
+model_path = "nn_model.h5"
 json_path = "class_indices.json"
 
 # ===============================
@@ -28,7 +28,7 @@ def load_model_safe(path):
         if not os.path.exists(path):
             st.error(f"❌ Model file not found: {path}")
             return None
-        model = tf.keras.models.load_model(path)
+        model = tf.keras.models.load_model(path, compile=False)
         return model
     except Exception as e:
         st.error(f"❌ Model Load Error: {e}")
